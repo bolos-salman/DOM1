@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class and Control Visibility</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+        .unclickable {
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>1.</h1>
+    <h1>Add Class to Paragraph</h1>
+    <input type="text" id="classInput" placeholder="Enter class name">
+    <button onclick="addClass()">Add Class</button>
+    <p id="paragraph">This is a paragraph.</p>
+
+    <h1>2.</h1>
+    <section>
+        <h2>Control Paragraph Visibility</h2>
+        <div>
+            <button onclick="toggleVisibility('para1')">Show/Hide Paragraph 1</button>
+            <p id="para1">This is the first paragraph.</p>
+        </div>
+        <div>
+            <button onclick="toggleVisibility('para2')">Show/Hide Paragraph 2</button>
+            <p id="para2">This is the second paragraph.</p>
+        </div>
+        <div>
+            <button onclick="toggleVisibility('para3')">Show/Hide Paragraph 3</button>
+            <p id="para3">This is the third paragraph.</p>
+        </div>
+    </section>
+
+    <script>
+        function addClass() {
+            const className = document.getElementById('classInput').value;
+            const paragraph = document.getElementById('paragraph');
+            paragraph.classList.add(className);
+        }
+
+        function toggleVisibility(id) {
+            const element = document.getElementById(id);
+            if (element.classList.contains('hidden')) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        }
+    </script>
+
+<h1>3.</h1>
+<section>
+    <button id="clickButton" onclick="changeButtonText()">Click Me</button>
+</section>
+
+<script>
+    function changeButtonText() {
+        const button = document.getElementById('clickButton');
+        button.textContent = 'Click!';
+        button.classList.add('unclickable');
+    }
+</script>
+
+</body>
+</html>
